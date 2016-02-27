@@ -49,7 +49,7 @@ module.exports = (input, target, raw) => {
     // get local variables (AST nodes)
     let locals = scopes.reduce((result, scope) => {
         scope.variables.filter(v => v.name !== 'arguments').forEach(variable => {
-            if (result.indexOf(variable) == -1) {
+            if (result.indexOf(variable) === -1) {
                 result.push(variable);
             }
         });
