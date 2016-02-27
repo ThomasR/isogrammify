@@ -1,0 +1,46 @@
+{
+  "name": "isogram-param",
+  "description": "Substitute a function's parameters by the letters of any given word (isogram)",
+  "version": "1.0.0",
+  "author": {
+    "name": "Thomas Rosenau",
+    "email": "thomasr@fantasymail.de",
+    "url": "http://thomas-rosenau.de/"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "keywords": [
+    "variables",
+    "parameters",
+    "isogram",
+    "obfuscation",
+    "personalization"
+  ],
+  "homepage": "https://github.com/ThomasR/isogram-param",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasR/isogram-param"
+  },
+  "bugs": {
+    "url": "https://github.com/ThomasR/isogram-param/issues"
+  },
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "devDependencies": {
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "should": "^8.2.2"
+  },
+  "dependencies": {
+    "escodegen": "^1.8.0",
+    "escope": "^3.4.0",
+    "esprima": "^2.7.2",
+    "estraverse": "^4.1.1"
+  },
+  "scripts": {
+    "test": "mocha --check-leaks --bail --reporter spec test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks --reporter dot test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --reporter spec test/"
+  }
+}
