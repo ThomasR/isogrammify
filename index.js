@@ -31,7 +31,7 @@ const util = require('./lib/util');
 *
 * @param {string|Function} input The program to be mangled
 * @param {string} target The isogram that should be used to rename the parameters
-* @param {boolean} raw `true` to return an AST instead of a string. Defaults to `false`j
+* @param {boolean} raw `true` to return an AST instead of a string. Defaults to `false`.
 * @returns {string|object} The mangled function as a string, or as an AST, depending on the `raw` argument.
 */
 module.exports = (input, target, raw) => {
