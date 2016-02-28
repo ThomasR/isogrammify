@@ -1,8 +1,8 @@
-#  isogram-param
-[![npm version](https://img.shields.io/npm/v/isogram-param.svg)](https://www.npmjs.com/package/isogram-param)
-[![Build Status](https://img.shields.io/travis/ThomasR/isogram-param.svg)](https://travis-ci.org/ThomasR/isogram-param)
-[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/ThomasR/isogram-param.svg)](https://codeclimate.com/github/ThomasR/isogram-param/coverage)
-[![Code Climate](https://img.shields.io/codeclimate/github/ThomasR/isogram-param.svg)](https://codeclimate.com/github/ThomasR/isogram-param/code)
+#  isogrammify
+[![npm version](https://img.shields.io/npm/v/isogrammify.svg)](https://www.npmjs.com/package/isogrammify)
+[![Build Status](https://img.shields.io/travis/ThomasR/isogrammify.svg)](https://travis-ci.org/ThomasR/isogrammify)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/ThomasR/isogrammify.svg)](https://codeclimate.com/github/ThomasR/isogrammify/coverage)
+[![Code Climate](https://img.shields.io/codeclimate/github/ThomasR/isogrammify.svg)](https://codeclimate.com/github/ThomasR/isogrammify/code)
 
 Have you ever wanted to turn this
 
@@ -16,11 +16,11 @@ Have you ever wanted to turn this
 !function(t,r,o,u,b,l,e,m,a,k,i,n,g){…
 ```
 
-Well, that is exactly what isogram-param does. You pass a function and a word, and iosgram-param renames the variables for you, such that the renamed parameters form that word.
+Well, that is exactly what isogrammify does. You pass a function and a word, and iosgram-param renames the variables for you, such that the renamed parameters form that word.
 
 ## Usage
 
-isogram-param takes three parameters,
+isogrammify takes three parameters,
  
 * `program` (`String`|`Function`) The JS program to transform.
  Note that this must be a complete syntactically valid script. You cannot pass a simple anonymous function. That is a syntax error. You can pass a named function, because it forms a valid program by itself.
@@ -30,22 +30,22 @@ isogram-param takes three parameters,
 ### Examples
 
 ```javascript
-var rename = require('isogram-param');
+var isogrammify = require('isogrammify');
 
 var f = '!function(test){}()';
-rename(f, 'x');
+isogrammify(f, 'x');
 //>     '!function(x){}()'
 
 var f = '!function(x,y,z){}()';
-rename(f, 'Yay');
+isogrammify(f, 'Yay');
 //>     '!function(Y,a,y){}()'
 
 var f = function (x,y,z){};
-rename(f, 'Yay');
+isogrammify(f, 'Yay');
 //> UnexpectedTokenError, since the function alone is not a valid program
 
 var f = function f(x,y,z){};
-rename(f, 'abc');
+isogrammify(f, 'abc');
 //>     function f(a,b,c){}
 ```
 
@@ -57,7 +57,7 @@ This tool was originally created as a part of [minislides](https://github.com/Th
 
 ```javascript
 var f = '!function(e,a,t,c,n,o,s,r,i,l,d,u,f,y,k,m){';
-rename(f, 'ツminïslĩdeṣ_FTWǃ');
+isogrammify(f, 'ツminïslĩdeṣ_FTWǃ');
 //>     '!function(ツ,m,i,n,ï,s,l,ĩ,d,e,ṣ,_,F,T,W,ǃ){'
 ```
 
@@ -87,4 +87,4 @@ So you’ll need to rename that `e` to something else first, and so on.
 !function (T, e, s, t) { function t(something, foo) {something(); foo(); e();} t(); a();}()
 ```
 
-[![](https://img.shields.io/github/license/ThomasR/isogram-param.svg)](LICENSE)
+[![](https://img.shields.io/github/license/ThomasR/isogrammify.svg)](LICENSE)

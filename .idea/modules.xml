@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/isogram-param.iml" filepath="$PROJECT_DIR$/.idea/isogram-param.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/isogrammify.iml" filepath="$PROJECT_DIR$/.idea/isogrammify.iml" />
     </modules>
   </component>
 </project>

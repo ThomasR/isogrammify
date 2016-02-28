@@ -25,9 +25,9 @@ const util = require('./lib/util');
 
 /**
 * Variable name replacer:
-*   function(e,t,n,o,a,d,r,l,c,i,s,u,x){
+*   function(e,t,n,o,a,d,l,c,i,s,u){
 * ->
-*   function(i,s,o,g,r,a,m,_,P,Á,R,A,M){
+*   function(I,s,o,g,r,a,m,M,i,f,y){
 *
 * @param {string|Function} input The program to be mangled
 * @param {string} target The isogram that should be used to rename the parameters

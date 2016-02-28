@@ -3,7 +3,7 @@
 const assert = require('assert');
 const rename = require('../');
 
-describe('isogram-param', () => {
+describe('isogrammify', () => {
 
     it('should process IEFEs', () => {
         let input = `!function (foo, bar, baz, qux) { function t(e, foo) {e(); foo(); bar();} t(); a();}()`;

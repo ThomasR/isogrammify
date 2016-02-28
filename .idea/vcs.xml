@@ -9,7 +9,7 @@
         </IssueNavigationLink>
         <IssueNavigationLink>
           <option name="issueRegexp" value="(?:\b(?:[Ii]ssue|[Tt]icket|[Bb]ug) )?(?:#|[Gg][Hh]-)([0-9]+)" />
-          <option name="linkRegexp" value="https://github.com/ThomasR/isogram-param/issues/$1#show_issue" />
+          <option name="linkRegexp" value="https://github.com/ThomasR/isogrammify/issues/$1#show_issue" />
         </IssueNavigationLink>
       </list>
     </option>

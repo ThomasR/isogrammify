@@ -1,5 +1,5 @@
 {
-  "name": "isogram-param",
+  "name": "isogrammify",
   "description": "Substitute a function's parameters by the letters of any given word (isogram)",
   "version": "1.0.0",
   "author": {
@@ -17,13 +17,13 @@
     "obfuscation",
     "personalization"
   ],
-  "homepage": "https://github.com/ThomasR/isogram-param",
+  "homepage": "https://github.com/ThomasR/isogrammify",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ThomasR/isogram-param"
+    "url": "https://github.com/ThomasR/isogrammify"
   },
   "bugs": {
-    "url": "https://github.com/ThomasR/isogram-param/issues"
+    "url": "https://github.com/ThomasR/isogrammify/issues"
   },
   "license": "Apache-2.0",
   "main": "index.js",
