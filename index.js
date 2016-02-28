@@ -25,11 +25,13 @@ const util = require('./lib/util');
 
 /**
 * Variable name replacer:
-*   function(e,t,n,o,a,d,r,l,c,i,s,u){
+*   function(e,t,n,o,a,d,r,l,c,i,s,u,x){
 * ->
-*   function(i,s,o,g,r,a,m,_,P,R,A,M){
+*   function(i,s,o,g,r,a,m,_,P,Á,R,A,M){
 */
 module.exports = (input, target, raw) => {
+    util.assertIsogram(target);
+
     // create syntax tree and scope analysis
     let ast = esprima.parse(input);
     var scopes = escope.analyze(ast).scopes;
@@ -48,7 +50,15 @@ module.exports = (input, target, raw) => {
 
     // get local variables (AST nodes)
     let locals = scopes.reduce((result, scope) => {
-        scope.variables.filter(v => v.name !== 'arguments').forEach(variable => {
+        scope.variables.filter(v => v.name !== 'arguments').filter(v => {
+            // filter global function names
+            for (let ref of v.defs) {
+                if (ref.type === 'FunctionName' && v.scope.type === 'global') {
+                    return false;
+                }
+            }
+            return true;
+        }).forEach(variable => {
             if (result.indexOf(variable) === -1) {
                 result.push(variable);
             }

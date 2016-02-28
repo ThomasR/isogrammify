@@ -16,7 +16,7 @@ Have you ever wanted to turn this
 !function(t,r,o,u,b,l,e,m,a,k,i,n,g){…
 ```
 
-Well, that is exactly what isogram-param does. You pass a function and a word, and iosgram-param renames the variables for you, in order to form that word.
+Well, that is exactly what isogram-param does. You pass a function and a word, and iosgram-param renames the variables for you, such that the renamed parameters form that word.
 
 ## Usage
 
@@ -25,28 +25,28 @@ isogram-param takes three parameters,
 * `program` (`String`|`Function`) The JS program to transform.
  Note that this must be a complete syntactically valid script. You cannot pass a simple anonymous function. That is a syntax error. You can pass a named function, because it forms a valid program by itself.
 * `target` (`String`) The string that the variables should be replaced by. Must be an _**isogram**_, that is a word without duplicate letters
-* `raw` (`Boolean`, optional) `true` to return an AST instead of a string. Defaults to `false`.
+* `raw` (`Boolean`, optional) `true` to return an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) instead of a string. Defaults to `false`.
 
 ### Examples
 
 ```javascript
 var rename = require('isogram-param');
 
-var f = '!function (test){}()';
+var f = '!function(test){}()';
 rename(f, 'x');
-//> '!function(x){}()'
+//>     '!function(x){}()'
 
-var f = '!function (x,y,z){}()';
+var f = '!function(x,y,z){}()';
 rename(f, 'Yay');
-//> '!function(Y,a,y){}()'
+//>     '!function(Y,a,y){}()'
 
 var f = function (x,y,z){};
 rename(f, 'Yay');
 //> UnexpectedTokenError, since the function alone is not a valid program
 
 var f = function f(x,y,z){};
-rename(f, 'Test');
-//> function T(e,s,t){}
+rename(f, 'abc');
+//>     function f(a,b,c){}
 ```
 
 ## Why can’t I simply search & replace instead?
