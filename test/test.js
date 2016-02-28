@@ -23,6 +23,11 @@ describe('isogram-param', () => {
         assert.equal(t.params[1].name, 'foo');
     });
 
+    it('should do nothing when renaming to an already given value', () => {
+        let input = `!function(T,e,s,t){}`;
+        assert.equal(rename(input, 'Test'), input);
+    });
+
     it('should process named functions', () => {
         let input = function f(foo, bar, baz, qux) { function t(e, foo) {e(); foo(); bar();} t(); a();};
         let expected = `function f(T,e,s,t){`;

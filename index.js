@@ -55,7 +55,7 @@ module.exports = (input, target, raw) => {
 
     // get local variables (AST nodes)
     let locals = scopes.reduce((result, scope) => {
-        scope.variables.filter(v => v.name !== 'arguments').filter(v => {
+        return result.concat(scope.variables.filter(v => v.name !== 'arguments').filter(v => {
             // filter global function names
             for (let ref of v.defs) {
                 if (ref.type === 'FunctionName' && v.scope.type === 'global') {
@@ -63,12 +63,7 @@ module.exports = (input, target, raw) => {
                 }
             }
             return true;
-        }).forEach(variable => {
-            if (result.indexOf(variable) === -1) {
-                result.push(variable);
-            }
-        });
-        return result;
+        }));
     }, []);
 
     // replace a node's variable name by the given letter
@@ -90,6 +85,7 @@ module.exports = (input, target, raw) => {
             throw new Error('Not enough variables to replace');
         }
         replaceName(candidate, letter);
+        // replace conflicting locals
         let taken = locals.map(l => l.name).concat(globalNames).concat(targetLetters);
         let freeLetter = util.getFreeLetter(taken);
         locals.forEach(local => {
