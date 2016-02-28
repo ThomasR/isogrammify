@@ -1,7 +1,7 @@
 {
+  "version": "1.0.0",
   "name": "isogrammify",
   "description": "Substitute a function's parameters by the letters of any given word (isogram)",
-  "version": "1.0.0",
   "author": {
     "name": "Thomas Rosenau",
     "email": "thomasr@fantasymail.de",
@@ -12,9 +12,16 @@
   },
   "keywords": [
     "variables",
+    "rename",
+    "replace",
+    "substitute",
+    "parameter",
     "parameters",
+    "word",
+    "word play",
     "isogram",
     "obfuscation",
+    "personalize",
     "personalization"
   ],
   "homepage": "https://github.com/ThomasR/isogrammify",
