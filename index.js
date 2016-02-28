@@ -28,6 +28,11 @@ const util = require('./lib/util');
 *   function(e,t,n,o,a,d,r,l,c,i,s,u,x){
 * ->
 *   function(i,s,o,g,r,a,m,_,P,Á,R,A,M){
+*
+* @param {string|Function} input The program to be mangled
+* @param {string} target The isogram that should be used to rename the parameters
+* @param {boolean} raw `true` to return an AST instead of a string. Defaults to `false`j
+* @returns {string|object} The mangled function as a string, or as an AST, depending on the `raw` argument.
 */
 module.exports = (input, target, raw) => {
     util.assertIsogram(target);
