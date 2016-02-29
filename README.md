@@ -87,4 +87,4 @@ So you’ll need to rename that `e` to something else first, and so on.
 !function (T, e, s, t) { function t(something, foo) {something(); foo(); e();} t(); a();}()
 ```
 
-[![](https://img.shields.io/github/license/ThomasR/isogrammify.svg)](LICENSE)
+[![License: Apache 2.0](https://img.shields.io/github/license/ThomasR/isogrammify.svg)](LICENSE)
