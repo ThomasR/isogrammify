@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "isogrammify",
   "description": "Substitute a function's parameters by the letters of any given word (isogram)",
   "author": {

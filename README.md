@@ -16,7 +16,7 @@ Have you ever wanted to turn this
 !function(t,r,o,u,b,l,e,m,a,k,i,n,g){…
 ```
 
-Well, that is exactly what isogrammify does. You pass a function and a word, and iosgram-param renames the variables for you, such that the renamed parameters form that word.
+Well, that is exactly what isogrammify does. You pass a function and a word, and iosgrammify renames the variables for you, such that the renamed parameters form that word.
 
 ## Usage
 
@@ -56,9 +56,9 @@ Oh yes, it does!
 This tool was originally created as a part of [minislides](https://github.com/ThomasR/minislides), where I did this:
 
 ```javascript
-var f = '!function(e,a,t,c,n,o,s,r,i,l,d,u,f,y,k,m){';
+var f = '!function(e,a,t,c,n,o,s,r,i,l,d,u,f,y,k,m){…';
 isogrammify(f, 'ツminïslĩdeṣ_FTWǃ');
-//>     '!function(ツ,m,i,n,ï,s,l,ĩ,d,e,ṣ,_,F,T,W,ǃ){'
+//>     '!function(ツ,m,i,n,ï,s,l,ĩ,d,e,ṣ,_,F,T,W,ǃ){…'
 ```
 
 But later, I decided against using non-ASCII characters, since they take up more than one byte per letter.
