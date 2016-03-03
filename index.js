@@ -17,7 +17,6 @@
 'use strict';
 
 const esprima = require('esprima');
-const estraverse = require('estraverse');
 const escodegen = require('escodegen');
 const escope = require('escope');
 
