@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const rename = require('../');
+const rename = require('../lib/isogrammify');
 
 describe('isogrammify', () => {
 

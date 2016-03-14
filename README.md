@@ -18,7 +18,7 @@ Have you ever wanted to turn this
 
 Well, that is exactly what isogrammify does. You pass a function and a word, and iosgrammify renames the variables for you, such that the renamed parameters form that word.
 
-## Usage
+## Usage in script
 
 isogrammify takes three parameters,
  
@@ -27,7 +27,7 @@ isogrammify takes three parameters,
 * `target` (`String`) The string that the variables should be replaced by. Must be an _**isogram**_, that is a word without duplicate letters
 * `raw` (`Boolean`, optional) `true` to return an [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) instead of a string. Defaults to `false`.
 
-### Examples
+### Examples (scripting)
 
 ```javascript
 var isogrammify = require('isogrammify');
@@ -47,6 +47,27 @@ isogrammify(f, 'Yay');
 var f = function f(x,y,z){};
 isogrammify(f, 'abc');
 //>     function f(a,b,c){}
+```
+
+## Usage from command line
+
+There is also a command-line interface, where isogrammify takes three arguments
+
+* `inputFile` The filename of the JS program to transform. The file must contain a valid JavaScript program as [descibed above](#usage-in-script).
+* `isogram` The string that the variables should be replaced by. Must be an _**isogram**_, that is a word without duplicate letters
+* `outputFile` (optional) A filename to write the output file to. Can be the same as `inputFile`. If omitted, the output is written to the console.
+
+### Examples (CLI)
+```plain
+$ npm install isogrammify
+…
+
+$ isogrammify foo.js HelLo
+!function(H,e,l,L,o){…
+
+$ isogrammify foo.js HelLo bar.js
+Wrote 4242 bytes to "bar.js".
+
 ```
 
 ## Does it accept unicode characters?
