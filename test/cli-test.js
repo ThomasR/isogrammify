@@ -17,11 +17,13 @@ let runSync = function (cmd/*, ...args */) { // dot-notation not yet supported b
     });
 };
 
+let assertNoFile = filename => assert.throws(() => fs.readFileSync(filename), /ENOENT/);
+
 let binary;
 
 describe('isogrammify CLI', () => {
 
-    let tmpDir, tmpInput, tmpOutput;
+    let tmpDir, tmpInput, tmpOutput, tmpInputInvalid;
     let code = '!function(a,b,c,d){}';
     let isogram = 'Test';
     let expected = '!function(T,e,s,t){}';
@@ -30,6 +32,8 @@ describe('isogrammify CLI', () => {
         tmpDir = mktemp.createDirSync('XXXXX~.tmp');
         tmpInput = path.resolve(tmpDir, 'in.js');
         fs.writeFileSync(tmpInput, code, 'utf-8');
+        tmpInputInvalid = path.resolve(tmpDir, 'invalid.js');
+        fs.writeFileSync(tmpInputInvalid, '%!#@', 'utf-8');
         tmpOutput = path.resolve(tmpDir, 'out.js');
     });
     after(() => {
@@ -79,5 +83,35 @@ describe('isogrammify CLI', () => {
         assert.equal(ret.stderr, '');
         assert.equal(ret.status, 0);
         assert.equal(fs.readFileSync(tmpOutput, 'utf-8'), expected);
+    });
+
+    it('throws an Error on too many arguments', () => {
+        it('four', () => {
+            let ret = runSync('node', binary, tmpInput, isogram, tmpOutput, 'foo');
+            assert.notEqual(ret.stderr, '');
+            assert.notEqual(ret.status, 0);
+            assertNoFile(tmpOutput);
+
+        });
+        it('six', () => {
+            let ret = runSync('node', binary, tmpInput, isogram, tmpOutput, 'foo', 'bar', 'baz');
+            assert.notEqual(ret.stderr, '');
+            assert.notEqual(ret.status, 0);
+            assertNoFile(tmpOutput);
+        });
+    });
+
+    it('throws an error when input file does not exist', () => {
+        let ret = runSync('node', binary, tmpOutput, isogram, tmpOutput);
+        assert.notEqual(ret.stderr, '');
+        assert.notEqual(ret.status, 0);
+        assertNoFile(tmpOutput);
+    });
+
+    it('throws an error when input file does not contain valid code', () => {
+        let ret = runSync('node', binary, tmpInputInvalid, isogram, tmpOutput);
+        assert.notEqual(ret.stderr, '');
+        assert.notEqual(ret.status, 0);
+        assertNoFile(tmpOutput);
     });
 });
